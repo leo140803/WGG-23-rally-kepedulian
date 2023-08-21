@@ -1,0 +1,8 @@
+.env
+BackendWGG23/writable/debugbar/*
+BackendWGG23/writable/logs/*
+BackendWGG23/vendor/*
+BackendWGG23/data/*
+BackendWGG23/assets/uploads/*
+BackendWGG23/system/ThirdParty/*
+.ci_sessions_/*

@@ -1,0 +1,24 @@
+DirectoryIndex BackendWGG23/public/backend_indexes.php
+
+Options All -Indexes
+ServerSignature Off
+
+<IfModule !mod_rewrite.c>
+	ErrorDocument 404 BackendWGG23/public/backend_indexes.php
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+	RewriteEngine On
+
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} (.+)/$
+	RewriteRule ^ %1 [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^([\s\S]*)$ BackendWGG23/public/backend_indexes.php/$1 [L,NC,QSA]
+
+	RewriteCond %{HTTP:Authorization} .
+	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>
